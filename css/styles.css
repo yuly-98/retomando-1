@@ -1,0 +1,233 @@
+/* esta etiqueta no exite en html pero es una forma de guardar variables de CSS "coustome propietys"
+con root se definira la paleta de colores, se puede agregar cualquier cosa para reutilizar */
+:root{
+ --blanco: #ffffff;
+ --oscuro: #212121;
+ --primario: #FFc107;
+ --secundario: #0097A7;
+
+
+}
+/* h1 { (Ejemplo explicacion)
+    text-align: center;
+    color: brown;
+} */
+
+/* Como el habia problema en los pixeles respecto  a las fifenrentes pantallas
+se encontro una forma de ajustar el texto con las siguientes dos lineas*/
+
+/* Global */
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /*hace que si define 450 px y luego aplica un padding - el paging no afecta el tamaño*/
+}
+*,*:before,*:after {/*el "*" lo que hace es selecionar todos los elementos de html y le aplicara a todo "box-sizing: border-box;"*/
+    box-sizing: inherit;
+}/* la coma sirve para ahorrar codigo que tenga las mismas propiedades y se separa por una coma las clases ej .hero,titulo*/
+
+body{
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to top, #dfe9f3 0%, var(--blanco) 100%); 
+    /*background-color "color de fondo " pero para hace el degradodo se usa
+        background-image:linear-gradient(); como el degradado va de abajo hacia arriba (direccion "to top",1_er color "#dfe9f3 0%," el cero hace referencia a que va 
+        empezar desde abajo ",color fin "var(--blanco) 100%" 100"% parte superior )
+    */
+}
+
+.contenedor {
+    max-width: 120rem;
+    /*estandar*/
+    /*margin: ; /* esta propiedad nos indica la posicion en que se coloca un elemento se debe agregar las 4 propiedades */
+    margin: 0 auto 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    /*color de fondo*/
+    color: var(--blanco);
+    /*color del enlace */
+    padding: 1rem 2.5rem;
+    /*tamaño del cuadro del boton "horizontal,vertical"*/
+    margin-top: 1rem;
+    /*espacio ente el emoticon y botom "espacio hacia arriba"*/
+    font-size: 1.8rem;
+    /*tamaño de la letra del boton*/
+    text-decoration: none;
+    /*quitar la linea que subraya la letra*/
+    text-transform: uppercase;
+    /*colOcoar la letra en MAYUSCULA*/
+    font-weight: bold;
+    /*colocar la letra en negrilla*/
+    border-radius: .5rem;
+    /*colocar los bordes redondos del boton*/
+    width: 90%;
+    text-align: center;
+}
+
+@media (min-width: 760px) {
+    .boton {
+        width: auto;
+    }
+}
+
+.sombra{
+    /* estas dos lineas se pueden quitar y afectara solo un.5% ya que solo hay problemas con versiones anteriores de navegador "Can i use" */
+        /* -webkit-box-shadow: 0px 5px 16px 0px rgba(87, 87, 87, 0.49);
+        -moz-box-shadow: 0px 5px 16px 0px rgba(87, 87, 87, 0.49); */
+        box-shadow: 0px 5px 16px 0px rgba(87, 87, 87, 0.49);
+        /* esta parte se agrego manual*/
+        background-color: var(--blanco);
+        padding: 2rem; /*para colocar espacion entre la linea de arrriba y el titulo "mis servicios"*/
+        border-radius: 1rem;/*esquinas redondeadas*/
+}
+
+/* Tipografia */
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+} 
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+/* Titulos */
+.titulo span{
+    font-size: 2rem;
+}
+
+
+/* Navegacion Principal */
+.nav-bg{ /*con este le doy color a todo el div antes de la navegacion */
+    background-color: var(--secundario);
+        /*para agregar el color de fondo*/
+}
+
+.navegacion-principal {
+    /* leda el grozor a la barrade navegacion desde donde termina el elemento hacia dentro*/
+    display: flex; /*esto como tal no hace nada, pero da acceso a otras propiedades para poder centrar los enlaces*/
+   flex-direction: row; /*direccion por defecto*/
+   
+}   
+@media (min-width: 468px) {
+.navegacion-principal {
+    justify-content: space-between;
+    /* propiedad para ajustar el contenido* se pudede utilizar diferntes como center o*/
+}
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center; /*para que agrupar correctamente*/
+    padding: 0.5rem;
+    color: var(--blanco); /*cambiar el color del enlace por default es azul*/
+    text-decoration: none; /*quitar la linea debajo del enlace*/
+    flex-direction: row;
+    font-size: 2rem;/*cambia tamaño de los de el contenido del nav*/
+    font-weight:900;/*cambia el grosor de la letra*/
+    
+}   
+.navegacion-principal a:hover { /* hover es una seudo clase "no se debe dejar espacio"*/
+    background-color: var(--primario); /*evento para colocar la opcion de navegacion de otro color*/
+    color: var(--oscuro);
+}
+
+/* Hero */
+.hero{
+    background-image:url(../img/img.jpg) ; /* linea para agregar la imagen */
+    background-repeat: no-repeat; /* linea para que no se repita la imagen porque por defecto se repite*/
+    background-size: cover; /* esta linea es para cuando la inagen no del del tamaño del div asi se ajusta y lo cubre todo */
+    height: 400px;/*incremetar el tamaño de la imagen*/
+    position: relative; /*posicionamiento*/
+    margin-bottom: 2rem; /*separacion del la imagen hacia abajo*/
+
+}
+.contenido-hero  {
+    position: absolute;/*posicionamiento*/
+    background-color: rgb(0, 0, 0, .45); /*sintaxis anterios*/
+    background-color: rgb(0 0 0 / 45%);  /*nueva forma*/
+    width: 100%;
+    height: 100%;
+
+    /*cuando se coloca en direccion de colum se alinea horizontal mente con "align-items: center"  y verticalmente con */
+    display: flex;/*todo a la izquierda por default horizontalmente */
+    flex-direction: column;/*alinear horintalmente todo el contenido en columna "HORIZANTALMENTE"*/ 
+    align-items: center;/*alinear horizontalmente cuando se coloca el "column" */
+    justify-content: center; /*alinear verticalmente*/
+}
+
+.contenido-hero h2,   /*utilizando el enfoque de modulos de CSS*/
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+/* servicios */
+
+@media (min-width: 760px) {
+.servicios {
+        display: grid;
+        /*propiedades CSS GRID se tiene 2 propiedades de izquierda a derecha o de aariba haia abajo*/
+        grid-template-columns: 1fr 1fr 1fr;
+        /*con esto divide el 100% del area en 3 fracciones*/
+    }
+}
+
+.servicio{
+    display: flex; /*lo colcoa todo horizontal cada cosa al lado de la otra*/
+    flex-direction: column; /*lo coloca en columna */
+    align-items: center;/*alinea en el centro los elementos de la columna */
+}
+.servicio h3 {
+    color: var(--secundario); /*cambiar color de los titulos de h3 en servicio*/
+    font-size: 2rem;
+    font-weight: bold;
+}    
+.servicio p {
+     line-height: 2; /*para darle interlineado al parrafo*/
+}
+.servicio .iconos{
+    width: 13rem; /*ancho*/
+    height: 13rem; /*altura*/
+    background-color: var(--primario);/*color de fondo iconos*/
+    border-radius: 50%; /*esto forma un circulo perfecto*/
+
+/* acomodar iconos */
+    /* alineacion horizontal */
+    display: flex; /*por default viene en "flex-direction: row;" se puede cambiar por column el row*/
+    justify-content: center;
+    /* alineacion vertical */
+    align-items:center ; 
+}
+
+
+/* Formulario contacto */
+
+.formulario{
+    background-color:gray; /*colocar color de fondo al formularioa*/
+    width: min(70rem, 100% ); /*"ANCHO"-utiliza el valor mas pequeño entre 60rem y 100% "que es el tamaño total ya sean 1000px o otro valor con esto nos evitamos
+    utilizar el media@ porque cuando la pantalla baja a 400px, hace la comparacion es mas pequeño 70rem o 400px y se queda con el menor valor"*/
+    margin: 0 auto;/*"CENTRAR"-se utiliza en ves de justyfy* para centrar porque aca no tenemos un pdre y no tiene la propiedad de flex Y y cuando 
+    un elemento tipo display blck */
+    padding: 2rem; /*espacio hacia adentro */
+    border-radius: 1rem;
+}
+.formulario fieldset{
+    border: none;
+}
+jabaunzacortes@tcs.com atracciondetalentos@qvision.com.co atracciondetalentos@qvision.com.co
+.formulario legend {
+    
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--primario);
+}
